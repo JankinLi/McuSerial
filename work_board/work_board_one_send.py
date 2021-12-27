@@ -20,7 +20,7 @@ def receive_reply():
                 print('error occur. code=' + str(data[3]))
                 break
 
-            if data[2] == 0x01 and data[3] == 0x02:
+            if data[2] == 0x010 and data[3] == 0x02:
                 break
         time.sleep(0.1)
 
@@ -38,6 +38,6 @@ if __name__ == '__main__':
     t = threading.Thread(target=receive_reply)
     t.start()
 
-    data_0x01_0x01 = bytes([0x4D, 0x43, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00])
+    data_0x01_0x01 = bytes([0x4D, 0x43, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00])
     send_result = serial_obj.write(data_0x01_0x01)
     print('send_result=' + str(send_result))
