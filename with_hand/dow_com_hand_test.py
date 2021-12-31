@@ -16,6 +16,9 @@ def receive_reply():
                 continue
             print('data=' + str(data))
 
+            if len(data) < 2:
+                continue
+
             if data[2] == 0x0E:
                 print('error occur. code=' + str(data[3]))
                 break
@@ -38,7 +41,7 @@ def receive_reply():
 
 
 if __name__ == '__main__':
-    serial_obj = serial.Serial('COM5', 115200)
+    serial_obj = serial.Serial('COM5', 2400)
     if serial_obj.isOpen():
         print('open success.')
     else:
